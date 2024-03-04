@@ -1,0 +1,38 @@
+--Create new table
+
+CREATE TABLE account(
+	user_id SERIAL PRIMARY KEY,
+	username VARCHAR(50) UNIQUE NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	email VARCHAR(250) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+	last_login TIMESTAMP
+);
+
+--Create intermedial table
+
+CREATE TABLE account_job(
+  user_id INTEGER REFERENCES account(user_id),
+  job_id INTEGER REFERENCES job(job_id)
+  hire_date TIMESTAMP
+);
+
+--Insert
+
+INSERT INTO account(user_name,password,email,created_on)
+VALUES
+(‘Jose’, ‘password’, ‘jose@mail.com’, CURRENT_TIMESTAMP);
+
+--Delete
+
+DELETE FROM job
+WHERE job name = ‘Cowboy’
+RETURNING job_id, job_name;
+
+--Check
+
+CREATE TABLE employees(
+Emp_id SERIAL PRIMARY KEY
+First_name VARCHAR(50) NOT NULL,
+Birthdate DATE CHECK (birthdate > ‘1900-01-01’)
+Hire_date DATE CHECK (hire_date > birthdate);
