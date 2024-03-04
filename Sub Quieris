@@ -1,0 +1,25 @@
+--Above average rental rate
+
+SELECT title,rental_rate
+FROM film
+WHERE rental rate > 
+(SELECT AVG(rental_rate) FROM film);
+
+--Find the film titles who had been return between two dates
+
+SELECT film_id,title
+FROM film
+WHERE film_id IN (2nd run)
+(SELECT inventory.film_id
+FROM rental
+INNER JOIN inventory ON inventory.inventory_id = rental.inventory_id
+WHERE return_date BETWEEN ‘2005-05-29’ AND ‘2005-05-30’);
+
+--Customers who has at least one payment over than 11$
+
+SELECT first_name, last_name
+FROM customer AS c
+WHERE EXISTS /NOT EXISTST 
+(SELECT * FROM payment AS p
+WHERE p.customer_id = c.customer_id
+AND amount > 11);
